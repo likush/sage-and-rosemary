@@ -2,13 +2,13 @@ import {initializeApp} from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA9hA-LTZ3AItBr1bIRkESafH2hBvfnstI",
-    authDomain: "sage-and-rosemary-f2752.firebaseapp.com",
-    projectId: "sage-and-rosemary-f2752",
-    storageBucket: "sage-and-rosemary-f2752.appspot.com",
-    messagingSenderId: "997680590060",
-    appId: "1:997680590060:web:f6db68bbea269653fa89c9",
-    measurementId: "G-9Y170JXKHX"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
