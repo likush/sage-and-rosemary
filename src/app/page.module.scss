@@ -1,0 +1,16 @@
+@import "./styles/_variables";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+
+  background-image: $page-bg;
+  background-size: cover;
+
+    font-weight: 400;
+    font-style: normal;
+}
