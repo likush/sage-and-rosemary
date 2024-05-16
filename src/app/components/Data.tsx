@@ -1,28 +1,30 @@
 'use client'; // This is a client component 👈🏽
 
-import React, {useEffect} from 'react';
-import {collection, getDocs} from 'firebase/firestore';
-import database from '@/app/firebaseConfig';
+import React, {useEffect, useState} from 'react';
+import {getDishes} from '@/app/services/firebase/firestore';
+import {Dishes} from '@/app/utils/types';
 
 
 const Data = () => {
-    const fetchPost = async () => {
-        const snapshot = await getDocs(collection(database, 'dishes'));
-        const data = snapshot.docs.map((doc) => {
-            let dishes: any = []
-            let value = doc.id;
-
-            return ({[value]: [...dishes, doc.data()] })
-        })
-
-        console.log('data', data)
-    }
+    const [dishes, setDishes] = useState<Dishes>([]);
 
     useEffect(() => {
-        fetchPost().then()
+        getDishes().then(dishes => {
+            if (dishes.length > 0) {
+                setDishes(dishes)
+            }
+        })
     }, [])
 
-    return <div/>
+
+    return (
+        <div>
+            {dishes.length > 0 ?
+                dishes.map((item, index) => <p key={index}>{item.category}</p>)
+                : <div/>
+            }
+        </div>
+    )
 }
 
 export default Data;
