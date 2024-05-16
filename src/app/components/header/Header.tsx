@@ -7,7 +7,7 @@ type Props = {
 
 const Header = ({title}: Props) => {
     return (
-        <div>
+        <div className={styles.container}>
             <h1 className={styles.header}>{title}</h1>
             <p className={styles.subheader}>Est. 2022</p>
         </div>
