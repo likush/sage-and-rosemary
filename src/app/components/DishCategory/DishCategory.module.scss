@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.container {
+    display: flex;
+    flex-basis: calc(50% - $gap);
+    flex-direction: column;
+    justify-content: center;
+    border: $border $grey;
+    margin-bottom: $gap;
+    padding: 10px;
+}
+
+.title {
+    color: $grey;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: left;
+    font-family: $font-poppins;
+    font-weight: 100;
+    padding-bottom: 10px;
+}
+
+.dish {
+    padding-bottom: 10px;
+}
+
+.dishTitle {
+    font-size: 16px;
+
+}
+
+.dishDescription {
+    font-size: 12px;
+}
+
+

@@ -1,5 +1,5 @@
 import {collection, getDocs as getFirebaseDocs, getFirestore} from '@firebase/firestore';
-import {DishCategory, Dishes} from '@/app/utils/types';
+import {DishesType} from '@/app/utils/types';
 import {initializeApp} from '@firebase/app';
 
 const config = {
@@ -15,16 +15,8 @@ const config = {
 const app = initializeApp(config);
 const database = getFirestore(app);
 
-export const getDishes = async (): Promise<Dishes> => {
+export const getDishes = async (): Promise<DishesType> => {
     const snapshot = await getFirebaseDocs(collection(database, 'dishes'));
 
-    return snapshot.docs.map((doc) => {
-        let dishes: DishCategory[] = []
-        let value = doc.id;
-
-        return ({
-            category: value,
-            dishes: [...dishes, doc.data()]
-        } as DishCategory)
-    })
+    return snapshot.docs.map((doc) => ({ category: doc.id, dishes: Object.values(doc.data())}))
 }
