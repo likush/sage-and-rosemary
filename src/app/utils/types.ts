@@ -1,12 +1,12 @@
-export type Dish = {
+export type DishType = {
     title: string;
     description: string;
     preorder?: number;
 }
 
-export type DishCategory = {
+export type DishCategoryType = {
     category: string;
-    dishes: Dish[];
+    dishes: DishType[];
 }
 
-export type Dishes = DishCategory[];
+export type DishesType = DishCategoryType[];

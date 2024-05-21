@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+
+.dishesContainer {
+  column-count: $dishes-per-row;
+  column-gap: $gap;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .dishesContainer {
+    column-count: 1;
+    column-gap: $gap-s;
+  }
+}
+

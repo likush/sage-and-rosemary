@@ -1,8 +1,17 @@
 @import "../../styles/variables";
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $gap;
+}
+
 .header {
     color: $dark-green;
     font-size: 48px;
+    font-family: $font-arapey;
 }
 
 .subheader {
