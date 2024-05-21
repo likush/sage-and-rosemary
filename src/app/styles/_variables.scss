@@ -4,6 +4,7 @@ $middle-green: #6a994e;
 $light-green: #a7c957;
 $raspberry: #bc4749;
 $beige: #f2e8cf;
+$white-smoke: #f2f2f2;
 $mint: #e7ecea;
 $grey: #484b48;
 
@@ -15,7 +16,14 @@ $border: 1px solid;
 $font-arapey: "Arapey", serif;
 $font-poppins: "Poppins", sans-serif;
 
+// paddings and gaps
+$gap: 40px;
+$gap-s: 16px;
+$padding-m: 24px;
+$padding-s: 16px;
+$padding-xs: 10px;
+
 //other variables
 $page-bg: url('https://images.unsplash.com/photo-1615800098779-1be32e60cca3?q=80&w=3110&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-$gap: 40px;
+
 $dishes-per-row: 2;

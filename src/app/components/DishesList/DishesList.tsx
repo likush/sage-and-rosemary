@@ -1,7 +1,7 @@
 'use client'; // This is a client component 👈🏽
 
 import React, {useEffect, useState} from 'react';
-import DishCategory from '@/app/components/DishCategory/DishCategory';
+import DishItem from '@/app/components/DishItem/DishItem';
 import styles from './DishesList.module.scss';
 
 import {getDishes} from '@/app/services/firebase/firestore';
@@ -21,10 +21,10 @@ const DishesList = () => {
 
 
     return (
-        <div className={styles.container}>
+        <div className={styles.dishesContainer}>
             {
                 dishes.length > 0 &&
-                dishes.map((category, index) => <DishCategory {...category} key={index}/>)
+                dishes.map((category, index) => <DishItem {...category} key={index}/>)
             }
         </div>
     )

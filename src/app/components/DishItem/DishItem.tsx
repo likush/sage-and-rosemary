@@ -1,15 +1,15 @@
 import React from 'react';
 import {DishCategoryType} from '@/app/utils/types';
-import styles from './DishCategory.module.scss';
+import styles from './DishItem.module.scss';
 
 
 // type DishCategoryProps = DishCategoryType;
 
-const DishCategory = (props: DishCategoryType): React.JSX.Element => {
+const DishItem = (props: DishCategoryType): React.JSX.Element => {
     const {category, dishes} = props;
 
     return (
-        <div className={styles.container}>
+        <div className={styles.dishContainer}>
             <p className={styles.title}>{category}</p>
 
             {dishes.map((dish, index) => (
@@ -22,4 +22,4 @@ const DishCategory = (props: DishCategoryType): React.JSX.Element => {
     )
 }
 
-export default DishCategory;
+export default DishItem;

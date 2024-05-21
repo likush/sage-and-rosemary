@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.dishContainer {
+  break-inside: avoid;
+  margin-bottom: $gap;
+  background-color: $white-smoke;
+  padding: $padding-m;
+}
+
+.title {
+  color: $grey;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: left;
+  font-family: $font-poppins;
+  font-weight: 100;
+  padding-bottom: $padding-xs;
+}
+
+.dish {
+  padding-bottom: $padding-s;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.dishTitle {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.dishDescription {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .dishContainer {
+    margin-bottom: $gap-s;
+  }
+}
+
+
