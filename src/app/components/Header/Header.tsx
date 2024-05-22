@@ -5,7 +5,7 @@ type Props = {
     title: string;
 }
 
-const Header = ({title}: Props) => {
+const Header = ({title}: Props): React.JSX.Element => {
     return (
         <div className={styles.container}>
             <h1 className={styles.header}>{title}</h1>

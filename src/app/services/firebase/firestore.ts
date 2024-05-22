@@ -1,4 +1,4 @@
-import {collection, getDocs as getFirebaseDocs, getFirestore} from '@firebase/firestore';
+import {collection, doc, getDocs as getFirebaseDocs, getFirestore, setDoc} from '@firebase/firestore';
 import {DishesType} from '@/app/utils/types';
 import {initializeApp} from '@firebase/app';
 
@@ -18,5 +18,15 @@ const database = getFirestore(app);
 export const getDishes = async (): Promise<DishesType> => {
     const snapshot = await getFirebaseDocs(collection(database, 'dishes'));
 
-    return snapshot.docs.map((doc) => ({ category: doc.id, dishes: Object.values(doc.data())}))
+    return snapshot.docs
+        .map((doc) => {
+            const {data, order_display} = doc.data();
+            return ({category: doc.id, orderDisplay: order_display, dishes: data})
+        })
+        .sort((a, b) => a.orderDisplay - b.orderDisplay)
+}
+
+// todo: refactor
+export const setData = async (data: any) => {
+    await setDoc(doc(database, 'dishes', 'soups'), data);
 }

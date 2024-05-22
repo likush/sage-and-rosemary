@@ -8,15 +8,17 @@ import {getDishes} from '@/app/services/firebase/firestore';
 import {DishesType} from '@/app/utils/types';
 
 
-const DishesList = () => {
+const DishesList = (props: {}): React.JSX.Element => {
     const [dishes, setDishes] = useState<DishesType>([]);
 
     useEffect(() => {
-        getDishes().then(dishes => {
-            if (dishes.length > 0) {
-                setDishes(dishes)
-            }
-        })
+        getDishes()
+            .then(dishes => {
+                if (dishes.length > 0) {
+                    setDishes(dishes)
+                }
+            })
+        // todo: handling errors
     }, [])
 
 

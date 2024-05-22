@@ -12,7 +12,7 @@ const DishItem = (props: DishCategoryType): React.JSX.Element => {
         <div className={styles.dishContainer}>
             <p className={styles.title}>{category}</p>
 
-            {dishes.map((dish, index) => (
+            {dishes && dishes.map((dish, index) => (
                 <div key={index} className={styles.dish}>
                     <p className={styles.dishTitle}>{dish.title}</p>
                     <p className={styles.dishDescription}>{dish.description}</p>
