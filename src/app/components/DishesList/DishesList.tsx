@@ -12,14 +12,34 @@ const DishesList = (props: {}): React.JSX.Element => {
     const [dishes, setDishes] = useState<DishesType>([]);
 
     useEffect(() => {
-        getDishes()
-            .then(dishes => {
-                if (dishes.length > 0) {
-                    setDishes(dishes)
-                }
-            })
+        getData().then()
         // todo: handling errors
     }, [])
+
+    const getData = async (): Promise<void> => {
+        try {
+            let dishes: DishesType;
+
+            const staleTime = localStorage.getItem('staleTime');
+            const now = Date.now();
+
+            if (!staleTime || +staleTime < now) {
+                dishes = await getDishes();
+
+                const date = new Date()
+
+                localStorage.setItem('staleTime', `${date.setDate(date.getDate() + 1)}`);
+                localStorage.setItem('dishes', JSON.stringify(dishes));
+            } else {
+                const data = localStorage.getItem('dishes')
+                dishes = data ? JSON.parse(data) : []
+            }
+
+            setDishes(dishes)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     return (
