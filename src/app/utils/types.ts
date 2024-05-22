@@ -6,6 +6,7 @@ export type DishType = {
 
 export type DishCategoryType = {
     category: string;
+    orderDisplay: number;
     dishes: DishType[];
 }
 

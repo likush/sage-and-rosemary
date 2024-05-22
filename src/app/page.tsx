@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
 import DishesList from '@/app/components/DishesList/DishesList';
-import Header from '@/app/components/header/Header';
+import Header from '@/app/components/Header/Header';
 
 
 export default function Home() {
