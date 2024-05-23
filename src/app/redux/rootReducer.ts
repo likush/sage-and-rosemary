@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
 
-// import slices
-// import mainSliceReducer from './slices/mainSlice';
+import dishesSliceReducer from './slices/dishesSlice';
 
 const rootReducer = combineReducers({
-    // cards: mainSliceReducer,
+    dishes: dishesSliceReducer,
 });
 
 export default rootReducer;

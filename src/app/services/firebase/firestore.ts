@@ -1,6 +1,9 @@
 import {collection, doc, getDocs as getFirebaseDocs, getFirestore, setDoc} from '@firebase/firestore';
 import {DishesType} from '@/app/utils/types';
 import {initializeApp} from '@firebase/app';
+import {dispatch} from '@/app/redux/store';
+import {getDishes} from '@/app/redux/slices/dishesSlice';
+import {Dispatch} from '@reduxjs/toolkit';
 
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -15,15 +18,24 @@ const config = {
 const app = initializeApp(config);
 const database = getFirestore(app);
 
-export const getDishes = async (): Promise<DishesType> => {
-    const snapshot = await getFirebaseDocs(collection(database, 'dishes'));
+export const getDocs =  (): (dispatch: Dispatch) => Promise<void> => {
+    return async (dispatch: Dispatch) => {
+        try {
+            const snapshot = await getFirebaseDocs(collection(database, 'dishes'));
 
-    return snapshot.docs
-        .map((doc) => {
-            const {data, order_display} = doc.data();
-            return ({category: doc.id, orderDisplay: order_display, dishes: data})
-        })
-        .sort((a, b) => a.orderDisplay - b.orderDisplay)
+            const result = snapshot.docs
+                .map((doc) => {
+                    const {data, order_display} = doc.data();
+                    return ({category: doc.id, orderDisplay: order_display, dishes: data})
+                })
+                .sort((a, b) => a.orderDisplay - b.orderDisplay)
+
+
+            dispatch(getDishes(result))
+        } catch (error) {
+            console.error("Error fetching card resources:", error);
+        }
+    };
 }
 
 // todo: refactor
