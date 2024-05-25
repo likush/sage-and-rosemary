@@ -4,42 +4,44 @@ import React, {useEffect, useState} from 'react';
 import DishItem from '@/app/components/DishItem/DishItem';
 import styles from './DishesList.module.scss';
 
-import {getDishes} from '@/app/services/firebase/firestore';
-import {DishesType} from '@/app/utils/types';
+
+import { useSelector, useDispatch } from '@/app/redux/store';
+import {getDocs} from '@/app/services/firebase/firestore';
 
 
 const DishesList = (props: {}): React.JSX.Element => {
-    const [dishes, setDishes] = useState<DishesType>([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getData().then()
-        // todo: handling errors
-    }, [])
+        dispatch(getDocs());
+    }, [dispatch]);
 
-    const getData = async (): Promise<void> => {
-        try {
-            let dishes: DishesType;
+    const { dishes } = useSelector((state) => state.dishes);
 
-            const staleTime = localStorage.getItem('staleTime');
-            const now = Date.now();
-
-            if (!staleTime || +staleTime < now) {
-                dishes = await getDishes();
-
-                const date = new Date()
-
-                localStorage.setItem('staleTime', `${date.setDate(date.getDate() + 1)}`);
-                localStorage.setItem('dishes', JSON.stringify(dishes));
-            } else {
-                const data = localStorage.getItem('dishes')
-                dishes = data ? JSON.parse(data) : []
-            }
-
-            setDishes(dishes)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    // const getData = async (): Promise<void> => {
+    //     try {
+    //         let dishes: DishesType;
+    //
+    //         const staleTime = localStorage.getItem('staleTime');
+    //         const now = Date.now();
+    //
+    //         if (!staleTime || +staleTime < now) {
+    //             dishes = await getDocs();
+    //
+    //             const date = new Date()
+    //
+    //             localStorage.setItem('staleTime', `${date.setDate(date.getDate() + 1)}`);
+    //             localStorage.setItem('dishes', JSON.stringify(dishes));
+    //         } else {
+    //             const data = localStorage.getItem('dishes')
+    //             dishes = data ? JSON.parse(data) : []
+    //         }
+    //
+    //         setDishes(dishes)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
 
     return (
