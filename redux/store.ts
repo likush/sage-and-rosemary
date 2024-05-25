@@ -5,7 +5,7 @@ import {
     useSelector as useAppSelector,
 } from 'react-redux';
 import rootReducer from './rootReducer';
-import {AppDispatch, RootState} from '@/app/redux/types';
+import {AppDispatch, RootState} from './types';
 
 const store = configureStore({
     reducer: rootReducer,

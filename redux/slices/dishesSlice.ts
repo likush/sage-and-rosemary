@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {DishCategoryType} from '@/app/utils/types';
+import {DishCategoryType} from '@/../../../../utils/types';
 
 type InitialState = {dishes: DishCategoryType[]}
 
