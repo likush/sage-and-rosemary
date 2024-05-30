@@ -1,51 +1,27 @@
 'use client'; // This is a client component 👈🏽
 
-import React, {useEffect} from 'react';
+import React from 'react';
 import DishItem from '../DishItem/DishItem';
 import styles from './DishesList.module.scss';
-import {useDispatch, useSelector} from '@/redux/store';
-import {getDocs} from '@/services/firebase/firestore';
+import {useFetchDishesQuery} from '@/redux/dishesApi';
+import Loader from '@/components/Loader/Loader';
 
 const DishesList = (): React.JSX.Element => {
-    const dispatch = useDispatch();
+    const {data: dishes, error, isLoading} = useFetchDishesQuery();
 
-    useEffect(() => {
-        dispatch(getDocs());
-    }, [dispatch]);
-
-    const { dishes } = useSelector((state) => state.dishes);
-
-    // const getData = async (): Promise<void> => {
-    //     try {
-    //         let dishes: DishesType;
-    //
-    //         const staleTime = localStorage.getItem('staleTime');
-    //         const now = Date.now();
-    //
-    //         if (!staleTime || +staleTime < now) {
-    //             dishes = await getDocs();
-    //
-    //             const date = new Date()
-    //
-    //             localStorage.setItem('staleTime', `${date.setDate(date.getDate() + 1)}`);
-    //             localStorage.setItem('dishes', JSON.stringify(dishes));
-    //         } else {
-    //             const data = localStorage.getItem('dishes')
-    //             dishes = data ? JSON.parse(data) : []
-    //         }
-    //
-    //         setDishes(dishes)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
-
+    if (isLoading) return <Loader/>;
+    if (error) return <p>{error?.message}</p>;
 
     return (
-        <div className={styles.dishesContainer}>
+        <div>
             {
-                dishes.length > 0 &&
-                dishes.map((category, index) => <DishItem {...category} key={index}/>)
+                dishes &&
+                dishes?.length > 0 &&
+                <div className={styles.dishesContainer}>
+
+                    {dishes?.map((category, index) => <DishItem {...category} key={index}/>)}
+
+                </div>
             }
         </div>
     )

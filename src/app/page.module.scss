@@ -2,10 +2,10 @@
 
 .main {
   background-color: $mint;
-  //background-image: $page-bg;
   background-size: cover;
   font-style: normal;
   min-height: 100vh;
+  box-sizing: border-box;
   padding: $gap;
   font-family: $font-poppins;
   color: $grey;
