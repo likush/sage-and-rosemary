@@ -1,7 +1,7 @@
 import styles from './page.module.scss';
-import DishesList from '@/../../components/DishesList/DishesList';
-import Header from '@/../../components/Header/Header';
-
+import React from 'react';
+import DishesList from '../components/DishesList/DishesList';
+import Header from '../components/Header/Header';
 
 export default function Home() {
 
