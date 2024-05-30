@@ -1,5 +1,5 @@
 import React from 'react';
-import {DishCategoryType} from '@/app/utils/types';
+import {DishCategoryType} from '@/../../utils/types';
 import styles from './DishItem.module.scss';
 
 

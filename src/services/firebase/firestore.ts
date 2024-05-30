@@ -1,9 +1,7 @@
 import {collection, doc, getDocs as getFirebaseDocs, getFirestore, setDoc} from '@firebase/firestore';
-import {DishesType} from '@/app/utils/types';
 import {initializeApp} from '@firebase/app';
-import {dispatch} from '@/app/redux/store';
-import {getDishes} from '@/app/redux/slices/dishesSlice';
 import {Dispatch} from '@reduxjs/toolkit';
+import {getDishes} from '../../redux/slices/dishesSlice';
 
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

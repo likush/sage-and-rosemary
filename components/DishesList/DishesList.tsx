@@ -1,13 +1,10 @@
 'use client'; // This is a client component 👈🏽
 
 import React, {useEffect, useState} from 'react';
-import DishItem from '@/app/components/DishItem/DishItem';
+import DishItem from '../DishItem/DishItem';
 import styles from './DishesList.module.scss';
-
-
-import { useSelector, useDispatch } from '@/app/redux/store';
-import {getDocs} from '@/app/services/firebase/firestore';
-
+import {useDispatch, useSelector} from '@/redux/store';
+import {getDocs} from '@/services/firebase/firestore';
 
 const DishesList = (props: {}): React.JSX.Element => {
     const dispatch = useDispatch();
