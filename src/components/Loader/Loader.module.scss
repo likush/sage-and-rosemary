@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+.container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 16px;
+    height: 16px;
+    background-color: $dark-green;
+    margin-right: $gap-s;
+    border-radius: $border-full;
+
+    //background:
+    //        radial-gradient(circle 8px at 8px center, #FFF 100%, transparent 0),
+    //        radial-gradient(circle 8px at 8px center, #FFF 100%, transparent 0);
+    //background-size: 16px 16px;
+    //background-repeat: no-repeat;
+    animation: ballX 0.5s linear infinite;
+
+    &:nth-child(2) {
+        background-color: $middle-green;
+    }
+
+    &:nth-child(3) {
+        background-color: $light-green;
+        margin-right: 0;
+    }
+}
+
+
+@keyframes ballX {
+    10% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

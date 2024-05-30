@@ -4,17 +4,24 @@ import React from 'react';
 import DishItem from '../DishItem/DishItem';
 import styles from './DishesList.module.scss';
 import {useFetchDishesQuery} from '@/redux/dishesApi';
+import Loader from '@/components/Loader/Loader';
 
 const DishesList = (): React.JSX.Element => {
+    const {data: dishes, error, isLoading} = useFetchDishesQuery();
 
-    const {data: dishes, isLoading} = useFetchDishesQuery()
+    if (isLoading) return <Loader/>;
+    if (error) return <p>{error?.message}</p>;
 
     return (
-        <div className={styles.dishesContainer}>
+        <div>
             {
                 dishes &&
                 dishes?.length > 0 &&
-                dishes.map((category, index) => <DishItem {...category} key={index}/>)
+                <div className={styles.dishesContainer}>
+
+                    {dishes?.map((category, index) => <DishItem {...category} key={index}/>)}
+
+                </div>
             }
         </div>
     )
